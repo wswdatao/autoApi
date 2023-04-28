@@ -1,0 +1,35 @@
+word_manage_01:                                   # 用例id，根据模块功能，第n个接口进行区分
+  allure:                                         # allure报告需要的相关信息（可为空，后续加支持）
+    feature: '词库管理'                            # 模块
+    severity: blocker                             # 用例级别  blocker-堵塞  critical-严重  normal-一般  minor-次要  trivial-轻微
+    story: '进行新增类型操作，为用例提供依赖数据'     #  用例功能简述
+    title: '新增类型'                              # 越短越好的标题
+  case_id: word_manage_01                         # 用例id，保证pytest集成用例执行时能通过用例ID查询数据
+  case_status: True                               # 用例状态 若为False不会加载到执行用例  只会读取到用例缓存池（适用于依赖接口无需执行的场景）
+  execute_task:                                   # 是否需要执行xxljob定时任务 True-是  其他值/为空均为否
+  task_rule:                                      # 与上一字段关联使用  预留字段
+  host: ${host}                                   # 使用regular方法读取用例时进行替换
+  url: '/audit/auditKeywordsType/save'            # 接口请求地址
+  method: POST_FILE                               # 接口请求方式  目前支持三种  GET  POST  POST_FILE-文件上传
+  file_path:  '${path}测试文件路径'                #  上传文件路径  存放在/data/upload/目录下  只需要填写到文件名
+  data:                                           # 接口请求参数  无参数时为空  部分字段可以定义为方法名  执行时自动替换
+    type: "${now_day}AutoAddType"
+    validates:
+      - "标题"
+      - "正文"
+    userName: "${user_name}"
+    userId: "${user_id}"
+  dependency_status: False                        # 用例是否存在依赖  True-是  False-否
+  dependency_case:                                # 依赖用例相关参数
+    dependency_id: word_manage_02
+    dependency_data:
+      - dependency_type: response                 # SQL或者response（sql暂未使用）
+        jsonpath: $.data.list[(@.length-1)].id    # 依赖参数的jsonpath地址
+        replace_key: typeId                       # 与测试用例中的某个值替换，也可能存在多个的场景
+        sql:                                      # 具体的sql查询语句，可能需要${host}的方式进行替换，暂时不启用Sql类型
+  assert:                                         # 断言相关参数
+    jsonpath: $.message                           # 依赖断言参数的jsonpath地址
+    type: ==                                      # 断言判断  ==-相等 !=-不等  in-包含等
+    value: 请求成功                                # 预期结果
+    assert_type: response                         # response-接口返回值断言 SQL-数据库断言
+  sql:                                            # 尚未使用，暂时保留

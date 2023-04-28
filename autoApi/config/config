@@ -1,0 +1,35 @@
+[DATABASE_MYSQL]
+database =
+account =
+password =
+host =
+port =
+
+[DATABASE_MONGO]
+url =
+database =
+user =
+password =
+
+[ENV]
+host = '自行填写接口通用的域名部分 如http://www.baidu.com/api'
+
+[LOGIN]
+url = /cms/login
+Device = PC
+user = autoTest
+password = afdd0b4ad2ec172c586e2150770fbf9e
+headers = {"Content-Type": "application/json; charset=UTF-8"}
+
+[DICT]
+站点 = site
+终端 = terminal
+
+[TABLE_MONGO]
+批量上传记录表 = tb_market_upload_task,creatorName,autoTest
+资料变更记录表 = tb_content_file_update_record,modifierName,autoTest
+
+[TABLE_MYSQL]
+商品中心_默认装修表 = delete from tb_market_decorate_config where creator_name = 'autoTest'
+资料状态变更记录表 = delete from tb_content_file_record_info where create_name = 'autoTest'
+

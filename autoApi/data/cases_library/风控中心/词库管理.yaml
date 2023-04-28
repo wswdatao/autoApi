@@ -1,0 +1,93 @@
+word_manage_01:
+  allure:
+    feature: '风控中心'
+    severity: blocker                             # 用例级别  blocker-堵塞  critical-严重  normal-一般  minor-次要  trivial-轻微
+    story: '风控中心-词库管理'
+    title: '新增类型'
+  case_id: word_manage_01
+  case_status: True
+  execute_task:
+  task_rule:
+  host: ${host}
+  url: '/audit/auditKeywordsType/save'
+  method: POST
+  requestType: json
+  data:
+    type: "${now_day}AutoAddType"
+    validates:
+      - "标题"
+      - "正文"
+    userName: "${user_name}"
+    userId: "${user_id}"
+  dependency_status: False
+  dependency_case:
+  assert:
+    jsonpath: $.message
+    type: ==
+    value: 请求成功
+    assert_type: response
+  sql:
+
+word_manage_02:
+  allure:
+    feature: '风控中心'
+    severity: minor                             # 用例级别  blocker-堵塞  critical-严重  normal-一般  minor-次要  trivial-轻微
+    story: '风控中心-词库管理'
+    title: '查询类型'
+  case_id: word_manage_02
+  case_status: False
+  execute_task:
+  task_rule:
+  host: ${host}
+  url: '/audit/auditKeywordsType/getAllList'
+  method: POST
+  requestType: json
+  data:
+  dependency_status: True
+  dependency_case:
+    dependency_id: word_manage_01
+    dependency_data:
+  assert:
+    jsonpath: $.message
+    type: ==
+    value: 请求成功
+    assert_type: response
+  sql:
+
+word_manage_03:
+  allure:
+    feature: '风控中心'
+    severity: blocker                             # 用例级别  blocker-堵塞  critical-严重  normal-一般  minor-次要  trivial-轻微
+    story: '风控中心-词库管理'
+    title: '新增关键字'
+  case_id: word_manage_03
+  case_status: True
+  execute_task:
+  task_rule:
+  host: ${host}
+  url: '/audit/auditKeywords/save'
+  method: POST
+  requestType: json
+  data:
+    searchable: 2
+    keyword: "${now_day}新增关键字"
+    categoryId: "5dea228a5054663ddc221190"
+    typeId: 需替换
+    level: 3
+    remark: ""
+    operatorName: "${user_name}"
+    operatorId: "${user_id}"
+  dependency_status: True
+  dependency_case:
+    dependency_id: word_manage_02
+    dependency_data:
+      - dependency_type: response
+        jsonpath: $.data.list[(@.length-1)].id
+        replace_key: typeId
+        sql:
+  assert:
+    jsonpath: $.message
+    type: ==
+    value: 请求成功
+    assert_type: response
+  sql:

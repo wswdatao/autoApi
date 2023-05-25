@@ -108,26 +108,6 @@ def regular(infos):
         raise RuntimeError(f"未找到对应的替换数据, 请检查数据【{infos}】是否正确.")
 
 
-def regular_params(infos, *args):
-    """
-        暂未使用，预留替换指定参数的方法
-    :param infos:
-    :param args:
-    :return:
-    """
-    rule = '\\${(.*?)}'
-    need = re.findall(rule, infos)
-    need_num = len(need)
-    param_num = len(args)
-    if need_num == param_num:
-        for i in range(need_num):
-            infos = re.sub(rule, f"{args[i]}", infos, 1)
-        return infos
-    else:
-        logger.error(f'替换的键值数量不匹配，需替换的键有{need}，接收的值为{args}.')
-        raise RuntimeError(f'替换的键值数量不匹配，需替换的键有{need}，接收的值为{args}.')
-
-
 if __name__ == '__main__':
     build = Build()
     print(build.path)

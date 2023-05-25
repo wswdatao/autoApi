@@ -64,10 +64,14 @@
 
 ### 3.执行测试用例
 &emsp;&emsp; 参数化执行时，会依次向test_basic.py中的【test_run】方法传入用例，具体执行逻辑见【test_run】方法，因为只有一条test_case方法，所以重点是【test_run】调用【recursion】方法的执行逻辑，根据当前用例为单接口/场景性用例，分别执行走不同的逻辑。
-&emsp;&emsp; `传入res（requests实例）、headers（请求头）、case_id（当前用例ID）、cache_cases（用例池），从用例池中拿到当前用例数据`
-&emsp;&emsp; `判断当前用例是否存在依赖用例：存在-获取依赖用例id和data，递归调用【recursion】方法，此时的入参为res、headers、dependency_case_id（依赖用例id）、case_list，继续执行该逻辑直到不存在依赖用例；不存在-不存在时直接执行当前用例`
-&emsp;&emsp; `紧接上一步，执行当前用例，执行完毕后判断用例是否存在依赖参数：存在-先替换依赖参数值，执行当前用例并返回执行结果；不存在-执行当前用例并返回执行结果`
-&emsp;&emsp; `执行完成后返回最终执行结果，做断言处理`
+
+&emsp;&emsp; `1.传入res（requests实例）、headers（请求头）、case_id（当前用例ID）、cache_cases（用例池），从用例池中拿到当前用例数据`
+
+&emsp;&emsp; `2.判断当前用例是否存在依赖用例：存在-获取依赖用例id和data，递归调用【recursion】方法，此时的入参为res、headers、dependency_case_id（依赖用例id）、case_list，继续执行该逻辑直到不存在依赖用例；不存在-不存在时直接执行当前用例`
+
+&emsp;&emsp; `3.紧接上一步，执行当前用例，执行完毕后判断用例是否存在依赖参数：存在-先替换依赖参数值，执行当前用例并返回执行结果；不存在-执行当前用例并返回执行结果`
+
+&emsp;&emsp; `4.执行完成后返回最终执行结果，做断言处理`
 
 ### 4.消息通知+测试数据清理
 &emsp;&emsp; 用例执行完成后，会触发钉钉消息通知，执行结束后运行conftest.py文件中的fixture函数【build】里边yield下面的部分，执行完毕后结束

@@ -73,14 +73,15 @@ def get_value_from_sql(cursor, sql):
     :param sql:         sql语句
     :return:            sql查询结果
     """
-    logger.debug(f"get_value_from_sql，方法暂未启用...")
+    logger.debug(f"get_value_from_sql，暂未使用，未编写逻辑...")
     return ''
 
 
 def get_result_from_task(info):
     """
-        适用于需要执行xxl-job定时任务的用例，目前暂定方案为执行后等待60秒后校验任务执行结果
-    :param info:         预留字段暂未启用，确定实现方式后再进行调整
+        适用于需要执行xxl-job定时任务的用例，目前暂定方案为执行后等待6秒后校验任务执行结果
+        后续确认python如何调用xxljob执行任务后再考虑实现
+    :param info:
     :return:
     """
     # 以上为定时任务执行区
@@ -94,7 +95,7 @@ def recursion(res, headers, case_id, case_list, cursor=None):
     :param headers:     请求头
     :param case_id:     用例id
     :param case_list:   用例池
-    :param cursor:      数据库游标，因暂不启用先默认为空
+    :param cursor:      数据库游标，暂不启用默认为空
     :return:            最终接口的返回值
     """
     current_case = case_list[case_id]

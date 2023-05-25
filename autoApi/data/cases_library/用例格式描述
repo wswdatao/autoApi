@@ -10,7 +10,7 @@ word_manage_01:                                   # ÓÃÀıid£¬¸ù¾İÄ£¿é¹¦ÄÜ£¬µÚn¸ö½
   task_rule:                                      # ÓëÉÏÒ»×Ö¶Î¹ØÁªÊ¹ÓÃ  Ô¤Áô×Ö¶Î
   host: ${host}                                   # Ê¹ÓÃregular·½·¨¶ÁÈ¡ÓÃÀıÊ±½øĞĞÌæ»»
   url: '/audit/auditKeywordsType/save'            # ½Ó¿ÚÇëÇóµØÖ·
-  method: POST_FILE                               # ½Ó¿ÚÇëÇó·½Ê½  Ä¿Ç°Ö§³ÖÈıÖÖ  GET  POST  POST_FILE-ÎÄ¼şÉÏ´«
+  method: POST_FILE                               # ½Ó¿ÚÇëÇó·½Ê½  ĞèÒªÀ©Õ¹ÔÚRequests.pyĞÂÔö£¨Âß¼­ĞèÒªÌØÊâ´¦Àí»¹Ğèµ÷Õûrecursion.pyÖĞµÄrun·½·¨£©
   file_path:  '${path}²âÊÔÎÄ¼şÂ·¾¶'                #  ÉÏ´«ÎÄ¼şÂ·¾¶  ´æ·ÅÔÚ/data/upload/Ä¿Â¼ÏÂ  Ö»ĞèÒªÌîĞ´µ½ÎÄ¼şÃû
   data:                                           # ½Ó¿ÚÇëÇó²ÎÊı  ÎŞ²ÎÊıÊ±Îª¿Õ  ²¿·Ö×Ö¶Î¿ÉÒÔ¶¨ÒåÎª·½·¨Ãû  Ö´ĞĞÊ±×Ô¶¯Ìæ»»
     type: "${now_day}AutoAddType"

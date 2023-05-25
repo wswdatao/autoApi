@@ -15,6 +15,7 @@ password =
 host = '自行填写接口通用的域名部分 如http://www.baidu.com/api'
 
 [LOGIN]
+; 登录相关参数  url为接口地址  执行时请求地址为上面的host+url
 url = /cms/login
 Device = PC
 user = autoTest

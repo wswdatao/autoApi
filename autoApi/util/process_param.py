@@ -25,6 +25,10 @@ from common.logger import logger
 
 class Build:
 
+    """
+        该类存放用例文件中需要替换的参数方法
+    """
+
     def __init__(self):
         pass
 
@@ -77,11 +81,17 @@ class Build:
 
 
 def regular(infos):
+    """
+        参数替换方法，将字典转成json字符串后进行参数替换，替换后再次转成字典返回
+    :param infos:
+    :return:
+    """
     rule = '\\${(.*?)}'
     infos = json.dumps(infos, ensure_ascii=False)
     try:
         while re.findall(rule, infos):
             key = re.search(rule, infos).group(1)
+            # 如果参数中不会出现以下字符导致读取报错 可以去掉异常处理 return也可以换成json.loads(info)
             try:
                 infos = re.sub(rule, f"{getattr(Build(), key)}", infos, 1)
                 infos = infos.replace("false", 'False')
@@ -99,6 +109,12 @@ def regular(infos):
 
 
 def regular_params(infos, *args):
+    """
+        暂未使用，预留替换指定参数的方法
+    :param infos:
+    :param args:
+    :return:
+    """
     rule = '\\${(.*?)}'
     need = re.findall(rule, infos)
     need_num = len(need)

@@ -23,13 +23,8 @@ from common.Requests import Requests
 from common.get_config import GetConfig
 from common.database import ConnectMongo
 from common.database import ConnectMysql
-from common.get_diction import GetDiction
 from util.read_yaml import ReadYAML
 from common.notice import Notice
-from util.process_param import regular
-from util.process_param import regular_params
-
-
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -84,17 +79,11 @@ def cursor(get_config):
 
 
 @pytest.fixture(scope='session')
-def get_diction():
+def read_yaml():
     """
-        在conftest文件中进行前置实例化，生成获取字典库的工具方法实例
+        在conftest文件中进行前置实例化，读取用例方法
     :return: 方法实例
     """
-    diction = GetDiction()
-    return diction
-
-
-@pytest.fixture(scope='session')
-def read_yaml():
     read = ReadYAML()
     return read
 

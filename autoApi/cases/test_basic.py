@@ -19,7 +19,7 @@ import allure
 import jsonpath
 from common.logger import logger
 from enums.assert_enums import Assert
-from common.asserter import Asserter
+from common.asserter import Assert
 from util.recursion import recursion
 from util.recursion import get_value_from_sql
 from util.recursion import get_value_from_response
@@ -57,11 +57,11 @@ class TestDemo:
             if assert_data['assert_type'] == Assert.RESPONSE.value:
                 actual = get_value_from_response(assert_data['jsonpath'], result)
                 if assert_data['type'] == Assert.Equal.value:
-                    Asserter.eq(assert_data['value'], actual)
+                    Assert.eq(assert_data['value'], actual)
                 elif assert_data['type'] == Assert.NotEqual.value:
-                    Asserter.ne(assert_data['value'], actual)
+                    Assert.ne(assert_data['value'], actual)
                 elif assert_data['type'] == Assert.Include.value:
-                    Asserter.include(assert_data['value'], actual)
+                    Assert.include(assert_data['value'], actual)
                 else:
                     logger.error(f"断言时出错，断言类型暂不支持【{assert_data['type']}】...")
                     raise RuntimeError(f"断言时出错，断言类型暂不支持【{assert_data['type']}】...")

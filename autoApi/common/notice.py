@@ -85,7 +85,7 @@ class Notice:
                          "text": f">{saying}\n> \n"
                                  f"#### 失败服务：{service} \n"
                                  f"#### 构建参数：{params} \n"
-                                 f"#### 构建日志：[【点我点我】]({console}) \n"
+                                 f"#### 构建日志：[【点我跳转】]({console}) \n"
                                  f"###### @{self.linkman} \n"
                      },
                      "at": {

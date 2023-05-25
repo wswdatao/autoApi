@@ -43,7 +43,7 @@ class ReadYAML:
             except NotADirectoryError:
                 continue
         files_path = [i for i in files if '.yaml' in i]
-        # files_path += [i for i in files if '存放点.yaml' in i]
+        # files_path += [i for i in files if '调试时指定文件.yaml' in i]
         return files_path
 
     def load_cases(self):
@@ -75,7 +75,7 @@ class ReadYAML:
 
     def save_cache_cases(self):
         """
-            缓存用例池数据，将读取的用例数据写入到用例池文件中，后续通过递归的方法组装用例场景
+            缓存用例池数据，将读取的用例数据写入到用例池文件中，后续通过递归组装用例场景
         :return:
         """
         cases = {}
@@ -92,6 +92,7 @@ class ReadYAML:
     def write_yaml(self, content, path):
         """
             快速生成yaml格式的用例文件，可直接复制贴到用例集中调整(注意-eq 需要手动调整为列表形式)
+            暂未使用 预留
         :param content:     接口入参
         :param path:        生成的文件名
         """
@@ -139,8 +140,5 @@ class ReadYAML:
 
 if __name__ == '__main__':
     rd = ReadYAML()
-    # content = {"exitTranscodeGraph":"","body":"","id":"","phraseTitle":"","uid":"","fileSourceChannelList":[],"format":[],"isExcellent":[],"showEffectList":[],"productType":"","productPriceStart":"","productPriceEnd":"","productEnd":"","categoryId":"","specificsIdList":[],"downNumStart":"","readNumStart":"","readNumEnd":"","totalPageStart":"","totalPageEnd":"","startDate":"","endDate":"","readNumSort":"","downNumSort":"","dateSort":"","showFlag":"y","contentDecorateType":"","coverType":"","videoKey":"","isShowCover":"","label":"","currentPage":1,"pageSize":10,"unSaleChannel":"","siteList":[]}
-    # rd.write_yaml(content, r"\内容中心\前端检索.yaml")
-    # print(rd.get_all_files())
-    # print(rd.load_cases())
+   # print(rd.load_cases())
     # rd.save_cache_cases()

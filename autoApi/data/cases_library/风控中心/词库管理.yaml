@@ -1,7 +1,7 @@
 word_manage_01:
   allure:
     feature: '风控中心'
-    severity: blocker                             # 用例级别  blocker-堵塞  critical-严重  normal-一般  minor-次要  trivial-轻微
+    severity: critical                             # 用例级别  blocker-堵塞  critical-严重  normal-一般  minor-次要  trivial-轻微
     story: '风控中心-词库管理'
     title: '新增类型'
   case_id: word_manage_01
@@ -72,7 +72,7 @@ word_manage_03:
     searchable: 2
     keyword: "${now_day}新增关键字"
     categoryId: "5dea228a5054663ddc221190"
-    typeId: 需替换
+    typeId: 获取依赖参数后会执行替换掉（见下方的replace_key）
     level: 3
     remark: ""
     operatorName: "${user_name}"

@@ -14,7 +14,7 @@
 """
 
 
-class Asserter:
+class Assert:
 
     @staticmethod
     def eq(expect, actual):

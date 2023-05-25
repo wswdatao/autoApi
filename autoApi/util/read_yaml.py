@@ -18,7 +18,6 @@ import yaml
 from get_path import get_path
 from get_platform import get_platform
 from util.process_param import regular
-from util.process_param import regular_params
 
 
 class ReadYAML:
